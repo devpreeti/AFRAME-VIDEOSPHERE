@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Videosphere</title>
+    <meta name="description" content="Videosphere - A-Frame">
+    <script src="./aframe-master.js"></script>
+    <script src="./play-on-click.js"></script>
+    <script src="./hide-on-play.js"></script>
+    <script src="./video-end.js"></script>
+    <style>
+        .a-enter-vr-button{
+          display:none!important;
+        }
+        </style>
+
+  </head>
+  <body>
+    <a-scene cursor="rayOrigin:mouse">
+      <a-assets>
+        <!--
+        SOURCE
+        Author: Bitmovin
+        URL:    https://bitmovin.com/demos/vr-360
+        -->
+        <video id="video" loop="false" 
+               src="./small.mp4"
+               crossOrigin="anonymous"></video>
+      </a-assets>
+      <a-videosphere
+      id="videoSphere"
+        rotation="0 -90 0"
+        src="#video"
+        visible="true"
+        play-on-click>
+      </a-videosphere>
+      <a-camera position="0 0 1.5">
+        <a-entity
+        id="text"
+          position="0 0 -1.5"
+          text="align: center;
+                width: 6;
+                wrapCount: 100;
+                color: white;
+                value: Click or tap to start video"
+          hide-on-play="#video"
+          video-end="value: ">
+        </a-entity>
+       
+      </a-camera>
+      <a-entity id="camera" camera look-controls position="0 0 1.5"></a-entity>
+      <a-box camera look-controls position="0 0 1.5"
+      look-at="#camera"
+      id="btn1"
+      rotation="0 0 0"
+      width="0.7"
+      height="0.7"
+      depth="0.2"
+      position="2 2 -1.5"
+      color="white"
+      material="opacity:0.3"
+      hide-on-play="#video"
+     video-end >
+     <a-entity id="text1"
+     text="value: Replay;
+     align:center;
+     wrapCount:100;
+     width:12;
+     position:0 0 -2;"
+     ></a-entity>
+          
+      </a-box>
+      <a-box camera look-controls position="0 0 1.5"
+      look-at="#camera"
+      id="btn2"
+      rotation="0 0 0"
+      width="0.8"
+      height="0.7"
+      depth="0.2"
+      position="2 2 -1.5"
+      color="white"
+      material="opacity:0.3"
+      hide-on-play="#video"
+     video-end >
+     <a-entity id="text2"
+     text="value: Google.com;
+     align:center;
+     wrapCount:100;
+     width:8;
+     position:0 0 -2;"
+     ></a-entity>
+          
+      </a-box>
+     
+     
+     
+   
+    </a-scene>
+  </body>
+</html>
